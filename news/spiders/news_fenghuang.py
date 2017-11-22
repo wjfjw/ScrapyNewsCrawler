@@ -12,20 +12,19 @@ class NewsfenghuangSpider(CrawlSpider):
         'news.ifeng.com'
     ]
     start_urls = [
-        'http://news.ifeng.com/listpage/11502/0/1/rtlist.shtml',
-        'http://news.ifeng.com'
+        'http://news.ifeng.com/listpage/11502/0/1/rtlist.shtml'
     ]
     rules = (
         Rule(
-            LinkExtractor(allow=('/listpage/11502/201711\d{2}/\d+/rtlist\.(html|htm|shtml)',)),
+            LinkExtractor(allow=('/listpage/11502/201711\d{2}/\d+/rtlist\.(html|htm|shtml)')),
             callback='parse_pass',
             follow=True
         ),
         Rule(
-            LinkExtractor( allow=('/a/201711\d{2}/\d+_0\.(html|htm|shtml)',)),
+            LinkExtractor( allow=('/a/201711\d{2}/\d+_0\.(html|htm|shtml)')),
             callback='parse_newsfenghuang',
             follow=True
-        ),
+        )
     )
 
     def parse_pass(self, response):
@@ -40,10 +39,10 @@ class NewsfenghuangSpider(CrawlSpider):
         content = self.get_content(response)
         if url and title and time and content:
             item = NewsItem()
-            item['url'] = self.get_url(response)
-            item['title'] = self.get_title(response)
-            item['time'] = self.get_time(response)
-            item['content'] = self.get_content(response)
+            item['url'] = url
+            item['title'] = title
+            item['time'] = time
+            item['content'] = content
             yield {
                 'url': item['url'],
                 'title': item['title'],
