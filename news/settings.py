@@ -88,3 +88,19 @@ ROBOTSTXT_OBEY = True
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+#指定输出CSV列的顺序
+FEED_EXPORTERS = {
+    'csv': 'news.spiders.csv_item_exporter.NewsCsvItemExporter'
+}
+
+FIELDS_TO_EXPORT = [
+    'time',
+    'title',
+    'url',
+    'source',
+    'content'
+]
+
+#指定输出CSV的分隔符
+CSV_DELIMITER = ','
