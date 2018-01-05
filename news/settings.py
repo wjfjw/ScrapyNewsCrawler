@@ -97,6 +97,7 @@ FEED_EXPORTERS = {
 FIELDS_TO_EXPORT = [
     'time',
     'title',
+    'category',
     'url',
     'source',
     'content'
