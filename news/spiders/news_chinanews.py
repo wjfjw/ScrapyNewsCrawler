@@ -105,6 +105,6 @@ class NewschinanewsSpider(CrawlSpider):
             # content = re.sub(r'.{0,15}(\d{1,2}月\d{1,2}日)?([电讯]|消息|报道)', "", content)
             # content = re.sub(r'[(（【].{0,20}记者.{0,20}[)）】]', "", content)
             # content = re.sub(r'[（(].{0,10}[)）]', "", content)
-            # content = re.sub(r'[\s 　]+', "", content)
+            content = re.sub(r'[\s 　]+', "", content)
             content = content.replace(",", "，")
         return content
